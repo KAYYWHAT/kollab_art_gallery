@@ -1,0 +1,12 @@
+.home_hero_image {
+  background-image: linear-gradient(to right, rgba(252, 252, 252, 0.9), rgba(252, 252, 252, 0)),
+                    asset-url('hero-home-image.jpg');
+  height: 600px;
+  width: 100%;
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
