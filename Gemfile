@@ -76,3 +76,6 @@ group :test do
 end
 
 gem "devise"
+
+#customized gem
+gem 'cloudinary'
