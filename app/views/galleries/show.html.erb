@@ -1,7 +1,62 @@
 <%= render "shared/navbar" %>
 <%= render "shared/flashes" %>
+<div class="container">
+  <div class="image-gallery">
+    <div class="large-image">
+      <%= image_tag 'https://hiroshige-gallery.com/asset/images/rental/rental_img01.jpg', alt: 'main image' %>
+    </div>
+  <div class="small-images">
+    <%= image_tag 'https://hiroshige-gallery.com/asset/images/rental/rental_img02.jpg', alt: 'Small Image 1' %>
+    <%= image_tag 'https://hiroshige-gallery.com/asset/images/rental/rental_img03.jpg', alt: 'Small Image 2' %>
+    <%= image_tag 'https://hiroshige-gallery.com/asset/images/rental/rental_img05.jpg', alt: 'Small Image 3' %>
+    <%= image_tag 'https://hiroshige-gallery.com/asset/images/rental/rental_img06.jpg', alt: 'Small Image 4' %>
+  </div>
+</div>
+</div>
+<body>
 <div>
 <h1><%= @gallery.name %></h1>
-<p><%= @gallery.description %></p>
 <%# <%= image_tag @gallery.image_url if @gallery.image_url.present? %>
 </div>
+  <div class="divider">
+<div class="container">
+  <div class="row">
+    <div class="gallery-host" style="padding-top: 24px; padding-bottom: 24px;">
+    <h2>gallery host placeholder</h2>
+    </div>
+  </div>
+  </div>
+  </div>
+  <div class="divider">
+  <div class="row">
+    <div class="gallery-short-description" style="padding-top: 24px; padding-bottom: 24px;">
+    <ul>
+    <li><h3>Beautiful modern feeling</h3></li>
+    <li><h3>Dynamic furniture included for use</h3></li>
+    <li><h3>Open space for a variety of mediums</h3></li>
+    </li>
+    </ul>
+    </div>
+  </div>
+  </div>
+    <div class="divider">
+  <div class="row">
+    <div class="gallery-description" style="padding-top: 24px; padding-bottom: 24px;">
+      <p><%= @gallery.description %></p>
+    </div>
+  </div>
+  </div>
+  <div class="row" style="background-color: #f0f0f0; border-radius: 8px; padding: 20px; border: 1px solid #ccc;">
+    <div class="gallery-booking" style="padding-top: 24px; padding-bottom: 24px;">
+      <h3>¥<%= @gallery.price %></h3>
+
+  <%= simple_form_for @gallery do |f| %>
+    <%= f.input :booking,
+                as: :string,
+                input_html: { data: { controller: 'datepicker' } } %>
+  <%= f.submit 'Submit', class: 'btn btn-info mt-2' %>
+  <% end %>
+  </div>
+  </div>
+  </body>
+  </div>
