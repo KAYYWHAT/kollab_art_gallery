@@ -1,0 +1,24 @@
+<%= render "shared/navbar" %>
+<div class="container">
+  <div>
+    <h1> Welcome to your <span class="flare">dashboard</span></h1>
+    <%= link_to "Register new gallery", new_gallery_path %>
+  <div>
+
+  <div> <!-- We'll display all pending applications here-->
+  <%# <% @applications.galleries.each do |application| %>
+    <h2> Pending Applications </h2>
+    <div>
+      <h3> Galery name </h3>
+    </div>
+  </div>
+
+  <div> <!-- We'll display all active applications here -->
+    <h2> Active Applications </h2>
+    <div>
+      <h2> Gallery name </h2>
+    </div>
+  </div>
+
+
+</div>

@@ -3,12 +3,14 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :galleries do
-    resources :applications, only: [:index, :new, :create]
+    resources :applications, only: [:create]
   end
 
-  resources :applications, only: [:show, :edit, :update, :destroy]
+  resources :applications, only: [:destroy]
 
-  resources :users
+  resources :users do
+    resources :applications, only: [:show, :index, :edit, :update]
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
