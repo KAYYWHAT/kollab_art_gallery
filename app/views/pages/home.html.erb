@@ -20,7 +20,7 @@
         <p style="font-size: 10px; color: gray;"><%= gallery.address %></p>
         <p><%= truncate(gallery.description, length: 150, omission: '...') %></p>
         <p style="display: inline-block;" class="highlight"><%= gallery.price.round %> yen/day</p>
-        <%= link_to 'View more', gallery_path(gallery) %>
+        <p><%= link_to 'View more', gallery_path(gallery), class: 'button-standard' %></p>
       </div>
     <% end %>
   </div>
