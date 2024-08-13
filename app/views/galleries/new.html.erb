@@ -1,43 +1,13 @@
-<h1 class="mb-4">List a New Gallery</h1>
+<%= simple_form_for @gallery, html: { multipart: true } do |f| %>
+  <%= f.input :name, label: 'Gallery Name', required: true, input_html: { class: 'form-control' } %>
 
-<%= form_with(model: @gallery, local: true, html: { multipart: true }) do |form| %>
-  <% if @gallery.errors.any? %>
-    <div class="alert alert-danger">
-      <h4 class="alert-heading">Errors:</h4>
-      <ul class="mb-0">
-        <% @gallery.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= f.input :address, label: 'Address', required: true, input_html: { class: 'form-control' } %>
 
-  <div class="mb-3">
-    <%= form.label :name, class: "form-label" %>
-    <%= form.text_field :name, class: "form-control" %>
-  </div>
+  <%= f.input :description, label: 'Description', as: :text, required: true, input_html: { class: 'form-control', rows: 4 } %>
 
-  <div class="mb-3">
-    <%= form.label :address, class: "form-label" %>
-    <%= form.text_field :address, class: "form-control" %>
-  </div>
+  <%= f.input :price, label: 'Price', required: true, input_html: { class: 'form-control' } %>
 
-  <div class="mb-3">
-    <%= form.label :description, class: "form-label" %>
-    <%= form.text_area :description, class: "form-control", rows: 4 %>
-  </div>
+  <%= f.input :photo, label: 'Gallery Photo', as: :file, required: true, input_html: { class: 'form-control-file' } %>
 
-  <div class="mb-3">
-    <%= form.label :price, class: "form-label" %>
-    <%= form.number_field :price, step: 0.01, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :photo %>
-    <%= form.file_field :photo, class: "form-control-file" %>
-  </div>
-
-  <div class="mb-3">
-    <%= form.submit 'Create Gallery', class: "btn btn-primary" %>
-  </div>
+  <%= f.button :submit, 'Create Gallery', class: 'btn btn-primary' %>
 <% end %>

@@ -1,5 +1,5 @@
 class GalleriesController < ApplicationController
-# before_action :autenticate_user!
+  before_action :authenticate_user!, only: [:new, :create]
 
   def new
     @gallery = Gallery.new
@@ -14,6 +14,16 @@ class GalleriesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  # def create
+  #   @gallery = Gallery.new(gallery_params)
+
+  #   if @gallery.save
+  #     redirect_to @gallery, notice: 'Gallery was successfully created.'
+  #   else
+  #     render :new, status: :unprocessable_entity
+  #   end
+  # end
 
   private
 
