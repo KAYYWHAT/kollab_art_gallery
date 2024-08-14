@@ -1,13 +1,14 @@
-<%= simple_form_for @gallery, html: { multipart: true } do |f| %>
-  <%= f.input :name, label: 'Gallery Name', required: true, input_html: { class: 'form-control' } %>
+<%= simple_form_for @gallery do |f| %>
+  <%= p @gallery %>
+  <%= f.input :name, label: 'Gallery Name', required: true %>
 
-  <%= f.input :address, label: 'Address', required: true, input_html: { class: 'form-control' } %>
+  <%= f.input :address, label: 'Address', required: true %>
 
-  <%= f.input :description, label: 'Description', as: :text, required: true, input_html: { class: 'form-control', rows: 4 } %>
+  <%= f.input :description, label: 'Description', as: :text, required: true %>
 
-  <%= f.input :price, label: 'Price', required: true, input_html: { class: 'form-control' } %>
+  <%= f.input :price, label: 'Price', required: true %>
 
-  <%= f.input :photo, label: 'Gallery Photo', as: :file, required: true, input_html: { class: 'form-control-file' } %>
+  <%= f.input :photo, as: :file, label: 'Gallery Photo' %>
 
   <%= f.button :submit, 'Create Gallery', class: 'btn btn-primary' %>
 <% end %>

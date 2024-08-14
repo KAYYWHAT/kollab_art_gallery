@@ -15,16 +15,6 @@ class GalleriesController < ApplicationController
     end
   end
 
-  # def create
-  #   @gallery = Gallery.new(gallery_params)
-
-  #   if @gallery.save
-  #     redirect_to @gallery, notice: 'Gallery was successfully created.'
-  #   else
-  #     render :new, status: :unprocessable_entity
-  #   end
-  # end
-
   private
 
   def gallery_params
