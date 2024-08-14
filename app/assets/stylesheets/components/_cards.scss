@@ -10,3 +10,25 @@
     border: solid 2px #FC22D3;
   }
 }
+
+ .application-card {
+  display: flex;
+  height: 240px;
+  width: 320px;
+  flex-direction: column;
+  justify-content: center;
+  background-color: red;
+  margin-top: 24px;
+}
+
+.application-card-image {
+  border-radius: 8px;
+  height: 75%;
+  width: 100%;
+}
+
+.applications-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
