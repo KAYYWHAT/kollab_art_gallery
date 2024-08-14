@@ -15,10 +15,12 @@
   display: flex;
   height: 240px;
   width: 320px;
+  border-radius: 8px;
   flex-direction: column;
   justify-content: center;
-  background-color: red;
+  background-color: white;
   margin-top: 24px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .application-card-image {
@@ -31,4 +33,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.pending-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 1rem;
 }

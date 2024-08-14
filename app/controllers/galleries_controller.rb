@@ -1,8 +1,7 @@
 class GalleriesController < ApplicationController
-
   before_action :authenticate_user!, only: [:new, :create]
-  
-   def index
+
+  def index
     @galleries = Gallery.all
   end
 
