@@ -54,7 +54,7 @@
   </div>
 
   <!-- Booking Form -->
-  <div class= "booking-form" style="width:32.5%;">
+  <!--<div class= "booking-form" style="width:32.5%;">
   <div><h2>Apply for Gallery</h2></div>
     <div class="gallery-booking" style="background-color: #f0f0f0; border-radius: 8px; padding: 20px; border: 1px solid #ccc;">
     <h3>¥<%= @gallery.price.round %> Per day</h3>
@@ -65,14 +65,15 @@
       <div class="divider"></div>
       <label for="formFile" class="form-label">Upload an image of your craft to show host</label>
       <input class="form-control" type="file" id="formFile">
-    <div class="divider"></div>
+    <div class="divider"></div> -->
 
-  <%= simple_form_for @gallery do |f| %>
-    <%= f.input :booking,
+  <!-- <%= simple_form_for [@gallery] do |f| %>
+      <%= f.input :booking,
                 as: :string,
                 input_html: { data: { controller: 'datepicker' } } %>
   <%= f.submit 'Reserve', class: 'button-standard mt-2 hover' %>
-  <% end %>
+  <% end %> -->
+  <%= link_to "Reserve!", new_gallery_application_path(@gallery), class:"button-reserve-temporary"  %>
   </div>
   </div>
   </div>

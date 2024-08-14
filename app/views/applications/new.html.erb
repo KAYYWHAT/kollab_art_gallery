@@ -1,7 +1,9 @@
 <%= render "shared/navbar" %>
 
-<%= simple_form_for [@gallery, @application] do |f| %>
-<%= f.input :start_date, as: :date, html5: true %>
-<%= f.input :end_date, as: :date, html5: true %>
-<%= f.button :submit %>
-<% end %>
+<div class="container">
+  <%= simple_form_for [@gallery, @application] do |f| %>
+    <%= f.input :start_date, as: :date, html5: true %>
+    <%= f.input :end_date, as: :date, html5: true %>
+    <%= f.button :submit %>
+  <% end %>
+</div>

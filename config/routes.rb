@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
 
   resources :galleries do
-    resources :applications, only: [:create]
+    resources :applications, only: [:new, :create]
   end
 
   resources :applications, only: [:destroy]

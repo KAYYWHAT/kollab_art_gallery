@@ -7,14 +7,20 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-User.create!(
-  first_name: "Kevin",
-  last_name: "downs",
-  email: "kevindowns@gmail.com",
-  password: "heyImKevin"
-)
+# User.create!(
+#   first_name: "Kevin",
+#   last_name: "downs",
+#   email: "kevindowns@gmail.com",
+#   password: "heyImKevin"
+# )
 
-Gallery.create!(
+file = URI.open("https://www.gallery-closet.jp/wp-content/uploads/2024/04/agc-14.jpg")
+daijiro = URI.open("https://static.wixstatic.com/media/38feaa_032afdaf7460436d9deefbff8a28c963~mv2.jpg/v1/crop/x_0,y_5,w_1397,h_1795/fill/w_606,h_782,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/D043DA4E-C6EC-48D9-B29F-C8B6D51A2560_edited.jpg")
+tomioko = URI.open("http://tomiokoyamagallery.com/wp/wp-content/uploads/2024/07/main_aya-Ito.jpg")
+hiro = URI.open("https://hiroshige-gallery.com/wp-content/uploads/slide01.jpg")
+kuko = URI.open("https://static.wixstatic.com/media/7101f6_bee6429ba9ba429c872959aebb5ecdb9~mv2.jpg/v1/fill/w_721,h_547,al_c,q_85,enc_auto/7101f6_bee6429ba9ba429c872959aebb5ecdb9~mv2.jpg")
+
+gallery1 = Gallery.create!(
   name: "Hiroshige Gallery",
   address: "2 Chome-10-4 Ebisuminami, Shibuya City, Tokyo 150-0022",
   description: "Welcome to the Hiroshige Gallery, a sanctuary dedicated to celebrating.",
@@ -25,7 +31,7 @@ Gallery.create!(
   user_id: 2
 )
 
-Gallery.create!(
+gallery2 = Gallery.create!(
   name: "Art Gallery Closet",
   address: "2 Chome-11-10 霞町ビル 3F, Nishiazabu, Minato City, Tokyo 106-0031",
   description: "We have been providing professional art consulting services in Tokyo for over 15 years working with high profile architects, interior designers, and furniture brands. From a wide selection of emerging and established contemporary artists, cultivating personal relationships with each one to ensure we can source the suitable piece for a client.",
@@ -36,7 +42,7 @@ Gallery.create!(
   user_id: 2
 )
 
-Gallery.create!(
+gallery3 = Gallery.create!(
   name: "KUKO Cafe & Gallery",
   address: "33-12 Yoyogi, Shibuya City, Tokyo",
   description: "Ambient space to enjoy art and coffee. Welcoming to creatives of all levels of experience and all forms of media.",
@@ -47,7 +53,7 @@ Gallery.create!(
   user_id: 2
 )
 
-Gallery.create!(
+gallery4 = Gallery.create!(
   name: "Art Gallery Daijiro",
   address: "2 Chome-9-11 Monzennakacho, Koto City, Tokyo",
   description: "Small two floor gallery near Monzennakacho station. Individual and group show of tradition form medias welcome.",
@@ -58,7 +64,7 @@ Gallery.create!(
   user_id: 2
 )
 
-Gallery.create!(
+gallery5 = Gallery.create!(
   name: "Tomio Koyama Gallery",
   address: "〒106-0032 Tokyo, Minato City, Roppongi, 6 Chome-5-24 complex665 2F",
   description: "The Tomio Koyama Gallery is a prominent contemporary art ovative exhibitions and support of both emerging and established artists. It showcases a diverse range of artworks, including paintings, sculptures, and multimedia pieces, and is celebrated for its dynamic approach to modern art. The gallery fosters a rich cultural dialogue by presenting both Japanese and international artists, making it a pivotal space in the global art scene.",
@@ -68,3 +74,9 @@ Gallery.create!(
   price: 9000,
   user_id: 2
 )
+
+gallery1.photos.attach(io: hiro, filename: "gallery.jpg", content_type: "image/jpg")
+gallery2.photos.attach(io: file, filename: "gallery2.jpg", content_type: "image/jpg")
+gallery3.photos.attach(io: kuko, filename: "gallery3.jpg", content_type: "image/jpg")
+gallery4.photos.attach(io: daijiro, filename: "gallery4.jpg", content_type: "image/jpg")
+gallery5.photos.attach(io: tomioko, filename: "gallery5.jpg", content_type: "image/jpg")
