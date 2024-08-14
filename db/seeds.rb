@@ -7,12 +7,14 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
 # User.create!(
 #   first_name: "Kevin",
 #   last_name: "downs",
 #   email: "kevindowns@gmail.com",
 #   password: "heyImKevin"
 # )
+
 
 file = URI.open("https://www.gallery-closet.jp/wp-content/uploads/2024/04/agc-14.jpg")
 daijiro = URI.open("https://static.wixstatic.com/media/38feaa_032afdaf7460436d9deefbff8a28c963~mv2.jpg/v1/crop/x_0,y_5,w_1397,h_1795/fill/w_606,h_782,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/D043DA4E-C6EC-48D9-B29F-C8B6D51A2560_edited.jpg")
