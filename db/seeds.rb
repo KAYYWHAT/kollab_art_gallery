@@ -9,12 +9,12 @@
 #   end
 user = User.find_by(email: "kevindowns@gmail.com")
 unless user
-  user = User.create!(
-    first_name: "Kevin",
-    last_name: "downs",
-    email: "kevindowns@gmail.com",
-    password: "heyImKevin"
-  )
+  # user = User.create!(
+  #   first_name: "Kevin",
+  #   last_name: "downs",
+  #   email: "kevindowns@gmail.com",
+  #   password: "heyImKevin"
+  # )
 end
 
 file = File.open(Rails.root.join('app', 'assets', 'images', 'closet.jpg'))
