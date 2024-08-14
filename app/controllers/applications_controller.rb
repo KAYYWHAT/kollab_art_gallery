@@ -3,6 +3,7 @@ class ApplicationsController < ApplicationController
 
   def index
     @applications = Application.all
+    @user = current_user
   end
 
   def show
@@ -21,7 +22,6 @@ class ApplicationsController < ApplicationController
       @application.status = "pending"
       @application.save
 
-      p "hello"
       flash[:alert] = "Your application was successful"
       # redirect_to galleries_path
     end

@@ -1,21 +1,25 @@
 <%= render "shared/navbar" %>
+
 <div class="container">
 
   <div class="applications-header">
     <h1> Welcome to your <span class="flare">dashboard</span></h1>
-    <%= link_to "Register new gallery", new_gallery_path %>
+    <%= link_to "Register new gallery", new_gallery_path, class: "button-user-dashboard-add-gallery" %>
   </div>
 
   <h2> Pending Kollabs </h2>
-
-  <div class="application-card">
-      <%= image_tag "https://newsroom.kddi.com/past_assets/topic/2020/11/25/image/p_index_co32_05.jpg", alt: "empty gallery", class: "application-card-image" %>
-    <div>
-      <h3> Gallery name </h3>
-    </div>
-    <div>
-      <%= link_to "See details"  %>
-    </div>
+  <div class="pending-card">
+    <% @user.applications.each do |application| %>
+      <div class="application-card">
+          <%= image_tag "https://newsroom.kddi.com/past_assets/topic/2020/11/25/image/p_index_co32_05.jpg", alt: "empty gallery", class: "application-card-image" %>
+        <div>
+          <h3> <%= application.gallery.name %></h3>
+        </div>
+        <div>
+          <%= link_to "See details", galleries_path , class:"button-standard" %>
+        </div>
+      </div>
+    <%end%>
   </div>
 
   <%# <div> <!-- We'll display all active applications here -->
@@ -24,6 +28,5 @@
       <h2> Gallery name </h2>
     </div>
   </div> %>
-
 
 </div>
