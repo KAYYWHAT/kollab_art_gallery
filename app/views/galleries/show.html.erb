@@ -15,30 +15,27 @@
     </div>
   </div>
 
-
-
-
-
-
-
-  <!-- Gallery Title -->
+ <!-- Gallery Title -->
   <div class="description-container space-between" style="padding-top: 16px;">
-  <div class="description" style="width: 65%;">
-  <div>
-    <h1><%= @gallery.name %></h1>
-  </div>
+    <div class="description" style="width: 65%;">
+      <div>
+        <h1><%= @gallery.name %></h1>
+        <!-- Website as a Hyperlink -->
+        <p><a href="<%= @gallery.website %>" style="text-decoration: none; color: #007bff;"><%= @gallery.website %></a></p>
+        <p><%= @gallery.address %></p>
+      </div>
 
   <!-- Dividers and Sections -->
   <div class="divider"></div>
 
-  <div class="gallery-short-description" style="display: flex; align-items: center; padding: 24px 0;">
+  <div class="gallery-short-description" style="display: flex; align-items: center;">
   <%= image_tag 'https://kitt.lewagon.com/placeholder/users/ssaunier', alt: 'host photo', class: 'avatar', style: 'margin-right: 12px;' %>
   <p style="margin: 0;"> Hosted by <strong>Kevin Downs</strong></p>
 </div>
 
   <div class="divider"></div>
 
-  <div class="gallery-short-description" style="padding-top: 24px; padding-bottom: 24px;">
+  <div class="gallery-short-description">
     <ul>
       <li><h3>Beautiful modern feeling</h3></li>
       <li><h3>Dynamic furniture included for use</h3></li>
@@ -54,14 +51,18 @@
   </div>
 
   <!-- Booking Form -->
+
   <!--<div class= "booking-form" style="width:32.5%;">
   <div><h2>Apply for Gallery</h2></div>
     <div class="gallery-booking" style="background-color: #f0f0f0; border-radius: 8px; padding: 20px; border: 1px solid #ccc;">
     <h3>¥<%= @gallery.price.round %> Per day</h3>
       <div class="divider"></div>
       <label>Description</label>
-        <textarea class="form-control" rows="4" placeholder="Write a short description to the host of your intended use of the gallery space."></textarea>
-        <div class="mb-3">
+      <textarea class="form-control" rows="4" placeholder="Write a short description to the host of your intended use of the gallery space."></textarea>
+      <div class="mb-3">
+        <div class="divider"></div>
+        <label for="formFile" class="form-label">Upload an image of your craft to show host</label>
+        <input class="form-control" type="file" id="formFile">
       <div class="divider"></div>
       <label for="formFile" class="form-label">Upload an image of your craft to show host</label>
       <input class="form-control" type="file" id="formFile">
@@ -77,4 +78,4 @@
   </div>
   </div>
   </div>
-  </body>
+</div>

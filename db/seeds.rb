@@ -28,7 +28,7 @@ gallery1 = Gallery.create!(
   photos: [],
   booking: "[[08162024, 08172024, 08182024, 08192024]]",
   price: 30000,
-  user_id: 2
+  user_id: 1
 )
 
 gallery2 = Gallery.create!(
@@ -39,7 +39,7 @@ gallery2 = Gallery.create!(
   photos: [],
   booking: "[[09012024, 09022024]]",
   price: 25000,
-  user_id: 2
+  user_id: 1
 )
 
 gallery3 = Gallery.create!(
@@ -50,7 +50,7 @@ gallery3 = Gallery.create!(
   photos: [],
   booking: "[[08102024, 08112024, 08122024], [09242024, 09252024, 09262024, 09272024, 09282024,]]",
   price: 5000,
-  user_id: 2
+  user_id: 1
 )
 
 gallery4 = Gallery.create!(
@@ -61,7 +61,7 @@ gallery4 = Gallery.create!(
   photos: [],
   booking: "[[09132024, 09142024, 09152024, 09162024 ], [09222024, 09232024, 09242024, 09252024, 09262024]]",
   price: 10000,
-  user_id: 2
+  user_id: 1
 )
 
 gallery5 = Gallery.create!(
@@ -72,7 +72,7 @@ gallery5 = Gallery.create!(
   photos: [],
   booking: "[[09252024, 09262024, 09272024, 09282024 ], [09032024, 09042024, 09052024, 09062024, 09072024]]",
   price: 9000,
-  user_id: 2
+  user_id: 1
 )
 
 gallery1.photos.attach(io: hiro, filename: "gallery.jpg", content_type: "image/jpg")
