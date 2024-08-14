@@ -1,6 +1,7 @@
 .image {
   width: 100%;
-  aspect-ratio: 1 / 1.25;
-  background-color: lightgray;
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  overflow: hidden;
   border-radius: 8px;
 }
