@@ -13,10 +13,9 @@
 <div class="page-container">
   <h2>Popular galleries in your area</h2>
     <div class="grid-container" style="margin-top: 24px;">
-    <% @galleries.each do |gallery| %>
+    <% @galleries.first(4).each do |gallery| %>
       <div class="gallery-card grid-item" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-
           <div class="image"><%= cl_image_tag gallery.photos.first.key, class: "image" %></div>
           <h3 style="margin-top: 16px"><%= gallery.name %></h3>
           <p style="font-size: 10px; color: gray;"><%= gallery.address %></p>
@@ -32,5 +31,21 @@
 </div>
 
 <div class="page-container">
-  <h2>Popular galleries world-wide</h2>
+  <h2>Popular galleries word-wide</h2>
+    <div class="grid-container" style="margin-top: 24px;">
+    <% @galleries.first(4).each do |gallery| %>
+      <div class="gallery-card grid-item" style="display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div class="image"><%= cl_image_tag gallery.photos.first.key, class: "image" %></div>
+          <h3 style="margin-top: 16px"><%= gallery.name %></h3>
+          <p style="font-size: 10px; color: gray;"><%= gallery.address %></p>
+          <p><%= truncate(gallery.description, length: 150, omission: '...') %></p>
+          <p style="display: inline-block;" class="highlight"><%= gallery.price.round %> yen/day</p>
+        </div>
+        <div>
+          <p><%= link_to 'View more', gallery_path(gallery), class: 'button-standard' %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
