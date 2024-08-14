@@ -1,5 +1,14 @@
 class GalleriesController < ApplicationController
+
   before_action :authenticate_user!, only: [:new, :create]
+  
+   def index
+    @galleries = Gallery.all
+  end
+
+  def show
+    @gallery = Gallery.find(params[:id])
+  end
 
   def new
     @gallery = Gallery.new
@@ -20,5 +29,4 @@ class GalleriesController < ApplicationController
   def gallery_params
     params.require(:gallery).permit(:name, :address, :description, :price, :photo)
   end
-
 end

@@ -1,0 +1,12 @@
+.gallery-card {
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0px 0px 5px rgba(25, 25, 25, 0.15);
+  background: rgb(254, 254, 254);
+  transition: border 0.3s;
+  border: solid 2px transparent;
+
+  &:hover {
+    border: solid 2px #FC22D3;
+  }
+}
