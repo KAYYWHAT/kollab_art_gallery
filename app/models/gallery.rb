@@ -1,8 +1,7 @@
 class Gallery < ApplicationRecord
   belongs_to :user
   has_many :applications, dependent: :destroy
-  has_one_attached :photo
-
+  has_many_attached :photos, dependent: :destroy
 
   validates :name, presence: true
   validates :address, presence: true, uniqueness: true

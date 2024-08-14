@@ -31,9 +31,10 @@
   <!-- Dividers and Sections -->
   <div class="divider"></div>
 
-  <div class="gallery-short-description" style="padding: 24px 0;">
-    <h2>Gallery host placeholder</h2>
-  </div>
+  <div class="gallery-short-description" style="display: flex; align-items: center; padding: 24px 0;">
+  <%= image_tag 'https://kitt.lewagon.com/placeholder/users/ssaunier', alt: 'host photo', class: 'avatar', style: 'margin-right: 12px;' %>
+  <p style="margin: 0;"> Hosted by <strong>Kevin Downs</strong></p>
+</div>
 
   <div class="divider"></div>
 
@@ -54,14 +55,23 @@
 
   <!-- Booking Form -->
   <div class= "booking-form" style="width:32.5%;">
-  <div class="gallery-booking" style="background-color: #f0f0f0; border-radius: 8px; padding: 20px; border: 1px solid #ccc;">
-      <h3>¥<%= @gallery.price.round %></h3>
+  <div><h2>Apply for Gallery</h2></div>
+    <div class="gallery-booking" style="background-color: #f0f0f0; border-radius: 8px; padding: 20px; border: 1px solid #ccc;">
+    <h3>¥<%= @gallery.price.round %> Per day</h3>
+      <div class="divider"></div>
+      <label>Description</label>
+        <textarea class="form-control" rows="4" placeholder="Write a short description to the host of your intended use of the gallery space."></textarea>
+        <div class="mb-3">
+      <div class="divider"></div>
+      <label for="formFile" class="form-label">Upload an image of your craft to show host</label>
+      <input class="form-control" type="file" id="formFile">
+    <div class="divider"></div>
 
   <%= simple_form_for @gallery do |f| %>
     <%= f.input :booking,
                 as: :string,
                 input_html: { data: { controller: 'datepicker' } } %>
-  <%= f.submit 'Submit', class: 'btn btn-info mt-2' %>
+  <%= f.submit 'Reserve', class: 'button-standard mt-2 hover' %>
   <% end %>
   </div>
   </div>
