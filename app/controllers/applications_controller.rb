@@ -10,6 +10,11 @@ class ApplicationsController < ApplicationController
     @application = Application.find(params[:id])
   end
 
+  def new
+    @application = Application.new
+    @gallery = Gallery.find(params[:gallery_id])
+  end
+
   def create
     @gallery = Gallery.find(params[:gallery_id])
 
@@ -23,7 +28,7 @@ class ApplicationsController < ApplicationController
       @application.save
 
       flash[:alert] = "Your application was successful"
-      # redirect_to galleries_path
+      redirect_to user_applications_path(current_user)
     end
   end
 
