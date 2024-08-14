@@ -9,7 +9,7 @@
 #   end
 user = User.find_by(email: "kevindowns@gmail.com")
 unless user
-  User.create!(
+  user = User.create!(
     first_name: "Kevin",
     last_name: "downs",
     email: "kevindowns@gmail.com",
