@@ -1,0 +1,14 @@
+<%= simple_form_for @gallery do |f| %>
+  <%= p @gallery %>
+  <%= f.input :name, label: 'Gallery Name', required: true %>
+
+  <%= f.input :address, label: 'Address', required: true %>
+
+  <%= f.input :description, label: 'Description', as: :text, required: true %>
+
+  <%= f.input :price, label: 'Price', required: true %>
+
+  <%= f.input :photo, as: :file, label: 'Gallery Photo' %>
+
+  <%= f.button :submit, 'Create Gallery', class: 'btn btn-primary' %>
+<% end %>

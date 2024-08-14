@@ -1,0 +1,15 @@
+.button-standard {
+  border: solid 1px rgb(25, 25, 25);
+  border-radius: 50px;
+  padding: 8px 24px;
+  text-decoration: none;
+  width: 100%;
+  margin-top: 8px;
+  color:rgb(25, 25, 25);
+  transition: 0.3s;
+
+  &:hover {
+    color: #E88A3D;
+    border: solid 1px #E88A3D;
+  }
+}
