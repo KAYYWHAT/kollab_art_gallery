@@ -1,3 +1,4 @@
+<div class="container-main">
 <%= simple_form_for @gallery do |f| %>
   <%= p @gallery %>
   <%= f.input :name, label: 'Gallery Name', required: true %>
@@ -12,3 +13,4 @@
 
   <%= f.button :submit, 'Create Gallery', class: 'btn btn-primary' %>
 <% end %>
+</div>
