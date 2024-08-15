@@ -1,44 +1,48 @@
 <%= render "shared/navbar" %>
+<%= render "shared/flashes" %>
 
 <div class="page-container" style="margin-top: 100px;">
 
-  <div class="applications-header">
+  <div style="margin-top: 125px;" class="applications-header">
     <h1> Welcome to your <span class="flare">dashboard</span></h1>
     <%= link_to "Register new gallery", new_gallery_path, class: "button-user-dashboard-add-gallery" %>
   </div>
 
-  <h2> Pending Kollabs </h2>
-    <div class="pending-card">
-        <% @user.applications.each do |application| %>
-          <div class="application-card">
-
-            <%= cl_image_tag application.gallery.photos.first.key , alt: "empty gallery", class: "application-card-image" %>
-
-            <div class="title">
-              <h3> <%= application.gallery.name %></h3>
-            </div>
-
-            <div class="description">
-              <p> ¥ <%=application.gallery.price.round %></p>
-              <p> Begin: <%= application.start_date %></p>
-              <p> End: <%= application.end_date %> </p>
-
-            </div>
-            <!-- <div class="button">
-              <%= link_to "See details", galleries_path , class:"button-dashboard" %>
-            </div> --> <!-- Button variation where the button is located only at the bottom -->
-            <%= link_to galleries_path, class:"button-dashboard-v2" do %>
-              <span class="span">See details</p> </span>
-            <%end%>
+  <h2 style="margin-top: 50px;"> Pending Kollabs </h2>
+    <div class="grid-container">
+      <% @user.applications.each do |application| %>
+        <div class="application-card grid-application" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="container-image-application"><%= cl_image_tag application.gallery.photos.first.key , alt: "empty gallery", class: "image" %></div>
+            <h3 style="margin-top: 16px;"><%= application.gallery.name %></h3>
+            <p> <span style="display: inline-block;" class="highlight"> ¥ <%=application.gallery.price.round %></span><br>
+            <%= application.start_date %> - <%= application.end_date %></p>
           </div>
-          <%end%>
+          <div class="space-between" style="align-items: baseline;">
+            <p><%= link_to 'See details', galleries_path, class:"button-standard", style: "margin-top: 8px;" %></p>
+            <p style="color: #FE6077;"><strong>PENDING</strong></p>
+          </div>
         </div>
-
-  <%# <div> <!-- We'll display all active applications here -->
-    <h2> Active Applications </h2>
-    <div>
-      <h2> Gallery name </h2>
+      <%end%>
     </div>
-  </div> %>
+
+      <h2 style="margin-top: 30px;"> Active Kollabs </h2>
+    <div class="grid-container">
+      <% @user.applications.each do |application| %>
+        <div class="application-card grid-application" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="container-image-application"><%= cl_image_tag application.gallery.photos.first.key , alt: "empty gallery", class: "image" %></div>
+            <h3 style="margin-top: 16px;"><%= application.gallery.name %></h3>
+            <p> <span style="display: inline-block;" class="highlight"> ¥ <%=application.gallery.price.round %></span><br>
+            <%= application.start_date %> - <%= application.end_date %></p>
+          </div>
+          <div class="space-between" style="align-items: baseline;">
+            <p><%= link_to 'See details', galleries_path, class:"button-standard", style: "margin-top: 8px;" %></p>
+            <p style="color: #608EED"><strong>ACTIVE</strong></p>
+          </div>
+        </div>
+      <%end%>
+    </div>
+
 
 </div>
