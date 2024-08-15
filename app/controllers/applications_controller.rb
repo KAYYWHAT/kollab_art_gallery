@@ -21,17 +21,22 @@ class ApplicationsController < ApplicationController
     @gallery = Gallery.find(params[:gallery_id])
     @user = current_user
 
-    if current_user == @gallery.user_id
+    if current_user.id == @gallery.user_id
       flash[:alert] = "You can't reserve your own gallery"
+      redirect_to new_gallery_application_path(@gallery) # Redirect back to the form
     else
       @application = Application.new(application_params)
       @application.gallery_id = @gallery.id
       @application.user_id = current_user.id
       @application.status = "pending"
-      @application.save
 
-      flash[:alert] = "Your application was successful"
-      redirect_to user_applications_path(current_user)
+      if @application.save
+        flash[:notice] = "Your application was successful"
+        redirect_to user_applications_path
+      else
+        flash[:alert] = "There was an error with your application"
+        render :new
+      end
     end
   end
 
@@ -42,6 +47,6 @@ class ApplicationsController < ApplicationController
   # end
 
   def application_params
-    params.require(:application).permit(:status, :start_date, :end_date)
+    params.require(:application).permit(:status, :start_date, :end_date, :description, photos: [])
   end
 end

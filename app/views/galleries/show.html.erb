@@ -4,7 +4,7 @@
 <div class="container-main">
   <div class="page-container">
     <!-- Image Gallery -->
-    <div class="image-gallery">
+    <div class="image-gallery" style="padding-top: 75px;">
       <div class="large-image">
         <%= image_tag 'https://hiroshige-gallery.com/asset/images/rental/rental_img01.jpg', alt: 'main image' %>
       </div>
@@ -15,27 +15,22 @@
         <%= image_tag 'https://hiroshige-gallery.com/asset/images/rental/rental_img06.jpg', alt: 'Small Image 4' %>
       </div>
     </div>
-
   <!-- Gallery Title -->
     <div class="description-container space-between" style="padding-top: 16px;">
       <div class="description" style="width: 65%;">
         <div>
           <h1><%= @gallery.name %></h1>
           <!-- Website as a Hyperlink -->
-          <p><a href="<%= @gallery.website %>" style="text-decoration: none; color: #007bff;"><%= @gallery.website %></a></p>
+          <p><a href="<%= @gallery.website %>" style="text-decoration: none; color: #007BFF;"><%= @gallery.website %></a></p>
           <p><%= @gallery.address %></p>
         </div>
-
     <!-- Dividers and Sections -->
     <div class="divider"></div>
-
     <div class="gallery-short-description" style="display: flex; align-items: center;">
     <%= image_tag 'https://kitt.lewagon.com/placeholder/users/ssaunier', alt: 'host photo', class: 'avatar', style: 'margin-right: 12px;' %>
     <p style="margin: 0;"> Hosted by <strong>Kevin Downs</strong></p>
   </div>
-
     <div class="divider"></div>
-
     <div class="gallery-short-description">
       <ul>
         <li><h3>Beautiful modern feeling</h3></li>
@@ -43,41 +38,40 @@
         <li><h3>Open space for a variety of mediums</h3></li>
       </ul>
     </div>
-
     <div class="divider"></div>
-
     <div class="gallery-description" style="padding-top: 24px; 0;">
       <p><%= @gallery.description %></p>
     </div>
-    </div>
+  </div>
 
     <!-- Booking Form -->
-
-    <!--<div class= "booking-form" style="width:32.5%;">
-    <div><h2>Apply for Gallery</h2></div>
-      <div class="gallery-booking" style="background-color: #f0f0f0; border-radius: 8px; padding: 20px; border: 1px solid #ccc;">
-      <h3>¥<%= @gallery.price.round %> Per day</h3>
+    <div class="booking-form" style="width:32.5%; padding-top: 20px;">
+      <div style="padding-bottom: 26px;">
+        <h2>Reserve Gallery</h2>
+      </div>
+      <div class="gallery-booking" style="background-color: #f0f0f0; border-radius: 8px; padding: 20px; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)">
+        <h3>¥<%= @gallery.price.round %> Per day</h3>
         <div class="divider"></div>
-        <label>Description</label>
-        <textarea class="form-control" rows="4" placeholder="Write a short description to the host of your intended use of the gallery space."></textarea>
-        <div class="mb-3">
-          <div class="divider"></div>
-          <label for="formFile" class="form-label">Upload an image of your craft to show host</label>
-          <input class="form-control" type="file" id="formFile">
-        <div class="divider"></div>
-        <label for="formFile" class="form-label">Upload an image of your craft to show host</label>
-        <input class="form-control" type="file" id="formFile">
-      <div class="divider"></div> -->
-
-    <!-- <%= simple_form_for [@gallery] do |f| %>
-        <%= f.input :booking,
-                  as: :string,
-                  input_html: { data: { controller: 'datepicker' } } %>
-    <%= f.submit 'Reserve', class: 'button-standard mt-2 hover' %>
-    <% end %> -->
-    <%= link_to "Reserve!", new_gallery_application_path(@gallery), class:"button-reserve-temporary"  %>
-    </div>
-    </div>
+        <%= form_with(model: [@gallery, @application], url: apply_gallery_path(@gallery), method: :post, local: true,  html: { multipart: true }) do |f| %>
+          <div class="form-group">
+            <%= f.label :start_date %>
+            <%= f.date_field :start_date, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :end_date %>
+            <%= f.date_field :end_date, class: 'form-control' %>
+          </div>
+          <div class="mb-3">
+            <%= f.label :photos, 'Images of your craft' %>
+            <%= f.file_field :photos, multiple: true, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :description %>
+            <%= f.text_area :description, rows: 4, class: 'form-control' %>
+          </div>
+          <%= f.submit 'Reserve', class: 'btn btn-info mt-2' %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
