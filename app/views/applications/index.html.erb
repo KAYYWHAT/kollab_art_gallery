@@ -1,6 +1,6 @@
 <%= render "shared/navbar" %>
 
-<div class="container">
+<div class="container-main">
 
   <div class="applications-header">
     <h1> Welcome to your <span class="flare">dashboard</span></h1>
@@ -8,19 +8,31 @@
   </div>
 
   <h2> Pending Kollabs </h2>
-  <div class="pending-card">
-    <% @user.applications.each do |application| %>
-      <div class="application-card">
-          <%= image_tag "https://newsroom.kddi.com/past_assets/topic/2020/11/25/image/p_index_co32_05.jpg", alt: "empty gallery", class: "application-card-image" %>
-        <div>
-          <h3> <%= application.gallery.name %></h3>
+    <div class="pending-card">
+        <% @user.applications.each do |application| %>
+          <div class="application-card">
+
+            <%= cl_image_tag application.gallery.photos.first.key , alt: "empty gallery", class: "application-card-image" %>
+
+            <div class="title">
+              <h3> <%= application.gallery.name %></h3>
+            </div>
+
+            <div class="description">
+              <p> ¥ <%=application.gallery.price.round %></p>
+              <p> Begin: <%= application.start_date %></p>
+              <p> End: <%= application.end_date %> </p>
+
+            </div>
+            <!-- <div class="button">
+              <%= link_to "See details", galleries_path , class:"button-dashboard" %>
+            </div> --> <!-- Button variation where the button is located only at the bottom -->
+            <%= link_to galleries_path, class:"button-dashboard-v2" do %>
+              <span class="span">See details</p> </span>
+            <%end%>
+          </div>
+          <%end%>
         </div>
-        <div>
-          <%= link_to "See details", galleries_path , class:"button-standard" %>
-        </div>
-      </div>
-    <%end%>
-  </div>
 
   <%# <div> <!-- We'll display all active applications here -->
     <h2> Active Applications </h2>
