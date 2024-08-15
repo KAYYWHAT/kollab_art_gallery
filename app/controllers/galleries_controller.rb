@@ -15,7 +15,7 @@ class GalleriesController < ApplicationController
     @application = @gallery.applications.build(application_params.merge(user_id: current_user.id))
 
     if @application.save
-      redirect_to @gallery, notice: 'Application was successfully created.'
+      redirect_to user_applications_path(current_user), notice: 'Application was successfully created.'
     else
       render :show
     end
