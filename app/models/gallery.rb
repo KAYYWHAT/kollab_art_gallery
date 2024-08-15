@@ -3,10 +3,8 @@ class Gallery < ApplicationRecord
   has_many :applications, dependent: :destroy
   has_many_attached :photos, dependent: :destroy
 
-  validates :name, presence: true
-  validates :address, presence: true, uniqueness: true
-
-  validates :description, presence: true, length: { minimum: 10, maximum: 1000 }
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
-  validates :user_id, presence: true
+  validates :name, :address, :description, :price, :user_id, presence: true
+  validates :address, uniqueness: true
+  validates :description, length: { minimum: 10, maximum: 1000 }
+  validates :price, numericality: { greater_than_or_equal_to: 0 }
 end
