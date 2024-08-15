@@ -1,0 +1,40 @@
+<%= render "shared/navbar" %>
+
+<div class="page-container">
+          <h1>Your application for <br><span class="flare"><%= @application.gallery.name %></span></h1>
+    <!-- Image Gallery -->
+    <div class="image-gallery">
+
+      <div class="dashboard-details">
+
+        <div class="card-product">
+          <%= cl_image_tag @application.gallery.photos.first.key %>
+          <div class="card-product-infos">
+            <h2><%= @application.gallery.name %></h2>
+            <p><%= @application.gallery.address %></p>
+            <p><%= @application.gallery.website %></p>
+          </div>
+          <%= link_to "", gallery_path(@application.gallery), class:"button-dashboard-v2" %>
+        </div>
+        <%= current_user.email %>
+
+        <div class="dashboard-information">
+          <h2> Applicants name </h2>
+          <div class="descriptions">
+            <p> <%= @application.description %></p>
+            <p> <i class="fa-solid fa-calendar-days"> </i> <%= @application.start_date %> - <%= @application.end_date %> </p>
+            <p> <%= @application.total.round %> </p>
+            <p> <%= @application.status %> </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="small-images">
+        <% @application.photos.each do |photo| %>
+          <%= cl_image_tag photo.key %>
+        <%end%>
+
+      </div>
+    </div>
+</div>
