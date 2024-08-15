@@ -66,13 +66,12 @@
         <h3>¥<%= @gallery.price.round %> Per day</h3>
         <div class="divider"></div>
         <%= form_with(model: [@gallery, @application], url: apply_gallery_path(@gallery), method: :post, local: true,  html: { multipart: true }) do |f| %>
-          <div class="form-group">
-            <%= f.label :start_date %>
-            <%= f.date_field :start_date, class: 'form-control', min: Date.today.to_s, required: true, input_html: { id: 'start_date' } %>
-          </div>
-          <div class="form-group">
-            <%= f.label :end_date %>
-            <%= f.date_field :end_date, class: 'form-control', required: true, input_html: {id: 'end_date'} %>
+          <div class="mb-3">
+            <%= f.label :Date %>
+            <%= f.date_field :start_date,
+                               class: 'form-control',
+                               required: true,
+                               data: {controller: "datepicker"} %>
           </div>
           <div class="mb-3">
             <%= f.label :photos, 'Images of your craft' %>
