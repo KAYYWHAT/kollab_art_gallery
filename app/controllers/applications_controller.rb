@@ -29,7 +29,7 @@ class ApplicationsController < ApplicationController
 
       if @application.save
         flash[:notice] = "Your application was successful"
-        redirect_to user_applications_path(current_user)
+        redirect_to user_applications_path
       else
         flash[:alert] = "There was an error with your application"
         render :new
