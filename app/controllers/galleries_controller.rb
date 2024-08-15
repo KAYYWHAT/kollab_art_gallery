@@ -3,14 +3,17 @@ class GalleriesController < ApplicationController
 
   def index
     @galleries = Gallery.all
+    @user = current_user
   end
 
   def show
     @gallery = Gallery.find(params[:id])
+    @user = current_user
     @application = @gallery.applications.new
   end
 
   def apply
+    @user = current_user
     @gallery = Gallery.find(params[:id])
     @application = @gallery.applications.build(application_params.merge(user_id: current_user.id))
 
@@ -23,6 +26,7 @@ class GalleriesController < ApplicationController
 
   def new
     @gallery = Gallery.new
+    @user = current_user
   end
 
   def create
