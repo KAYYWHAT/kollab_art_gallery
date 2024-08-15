@@ -12,42 +12,17 @@
 }
 
  .application-card {
-  display: flex;
-  height: 320px;
-  width: 320px;
   border-radius: 8px;
-  flex-direction: column;
-  justify-content: center;
-  background-color: white;
+  padding: 16px;
+  background-color: rgb(254, 254, 254);
   margin-top: 24px;
-  position: relative;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 5px rgba(25, 25, 25, .2);
+  transition: border 0.3s;
+  border: solid 2px transparent;
 
 
   &:hover {
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  }
-
-  .button {
-    position: absolute;
-    bottom: 10px;
-  }
-
-  .title {
-    position: absolute;
-    bottom: 120px;
-    left: 10px;
-  }
-
-  .description {
-    position: absolute;
-    bottom: 50px;
-    left: 10px;
-  }
-
-  p {
-    margin: 0;
-    color: #a6a3a3;
+    border: solid 2px #FC22D3;
   }
 }
 
@@ -64,6 +39,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  align-content: center;
 }
 
 .pending-card {
