@@ -1,39 +1,41 @@
 <%= render "shared/navbar" %>
+<%= render "shared/flashes" %>
 
-<div class="container-main">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
+<body class="gradient">
+  <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <div class="account-container">
+      <div>
+        <h2>Register gallery</h2>
         <%= simple_form_for @gallery do |f| %>
-          <div class="form-group">
-            <%= f.input :name, label: 'Gallery Name', required: true, input_html: { class: 'form-control-sm' } %>
+          <div class="form-group" style="margin-top: 16px; font-family: 'Roboto', sans-serif;">
+            <%= f.input :name, label: 'Gallery Name', placeholder: 'Gallery name', required: true, input_html: { class: 'form-control-sm' } %>
           </div>
 
-          <div class="form-group">
-            <%= f.input :address, label: 'Address', required: true, input_html: { class: 'form-control-sm' } %>
+          <div class="form-group" style="font-family: 'Roboto', sans-serif;">
+            <%= f.input :address, label: 'Address', placeholder: 'Gallery address', required: true, input_html: { class: 'form-control-sm' } %>
           </div>
 
-          <div class="form-group">
-            <%= f.input :description, label: 'Description', as: :text, required: true, input_html: { class: 'form-control-sm' } %>
+          <div class="form-group" style="font-family: 'Roboto', sans-serif;">
+            <%= f.input :description, label: 'Description', placeholder: 'Gallery description',as: :text, required: true, input_html: { class: 'form-control-sm' } %>
           </div>
 
-          <div class="form-group">
-            <%= f.input :price, label: 'Price', required: true, input_html: { class: 'form-control-sm' } %>
+          <div class="form-group" style="font-family: 'Roboto', sans-serif;">
+            <%= f.input :price, label: 'Rental price per day', placeholder: 'Gallery price per day', required: true, input_html: { class: 'form-control-sm' } %>
           </div>
 
-          <div class="form-group">
+          <div class="form-group" style="font-family: 'Roboto', sans-serif;">
             <%= f.input :website, label: 'Website', placeholder: 'https://example.com', input_html: { class: 'form-control-sm' } %>
           </div>
 
-          <div class="form-group">
+          <div class="form-group" style="font-family: 'Roboto', sans-serif;">
             <%= f.input :photos, as: :file, label: 'Gallery Photos', input_html: { multiple: true, class: 'form-control-sm' } %>
           </div>
 
           <div class="form-group">
-            <%= f.button :submit, 'Create Gallery', class: 'btn btn-primary btn-sm' %>
+            <%= f.button :submit, 'Create Gallery', class: 'button-standard' %>
           </div>
         <% end %>
       </div>
     </div>
   </div>
-</div>
+</body>
