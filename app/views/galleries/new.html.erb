@@ -5,8 +5,8 @@
   <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
     <div class="account-container">
       <div>
-        <h2>Register gallery</h2>
-        <%= simple_form_for @gallery do |f| %>
+        <h2>Register Gallery</h2>
+        <%= simple_form_for @gallery, html: { multipart: true } do |f| %>
           <div class="form-group" style="margin-top: 16px; font-family: 'Roboto', sans-serif;">
             <%= f.input :name, label: 'Gallery Name', placeholder: 'Gallery name', required: true, input_html: { class: 'form-control-sm' } %>
           </div>
@@ -16,11 +16,11 @@
           </div>
 
           <div class="form-group" style="font-family: 'Roboto', sans-serif;">
-            <%= f.input :description, label: 'Description', placeholder: 'Gallery description',as: :text, required: true, input_html: { class: 'form-control-sm' } %>
+            <%= f.input :description, label: 'Description', placeholder: 'Gallery description', as: :text, required: true, input_html: { class: 'form-control-sm' } %>
           </div>
 
           <div class="form-group" style="font-family: 'Roboto', sans-serif;">
-            <%= f.input :price, label: 'Rental price per day', placeholder: 'Gallery price per day', required: true, input_html: { class: 'form-control-sm' } %>
+            <%= f.input :price, label: 'Rental Price per Day', placeholder: 'Gallery price per day', required: true, input_html: { class: 'form-control-sm' } %>
           </div>
 
           <div class="form-group" style="font-family: 'Roboto', sans-serif;">
@@ -28,7 +28,7 @@
           </div>
 
           <div class="form-group" style="font-family: 'Roboto', sans-serif;">
-            <%= f.input :photos, as: :file, label: 'Gallery Photos', input_html: { multiple: true, class: 'form-control-sm' } %>
+            <%= f.input :photos, as: :file, label: 'Gallery Photos', input_html: { multiple: true, class: 'form-control-sm', required: true } %>
           </div>
 
           <div class="form-group">
