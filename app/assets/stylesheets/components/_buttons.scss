@@ -42,3 +42,42 @@
     width: 320px;
     text-align: center;
 }
+
+.button-dashboard {
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding: 8px 24px;
+    text-decoration: none;
+    padding-left: 115px;
+    padding-right: 116px;
+    margin-top: 8px;
+    color: #191919;
+    transition: 0.2s;
+    border-top: 0px;
+
+  &:hover {
+    color: #E88A3D;
+  }
+}
+
+.button-dashboard-v2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    text-align: center;
+    color: #191919;
+    transition: 0.2s;
+    text-decoration: none;
+    &:hover {
+      color: #E88A3D;
+    }
+
+    span {
+      position: absolute;
+      bottom: 10px;
+      bottom: 6px;
+      right: 124px;
+    }
+}
