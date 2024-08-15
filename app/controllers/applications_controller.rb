@@ -8,15 +8,18 @@ class ApplicationsController < ApplicationController
 
   def show
     @application = Application.find(params[:id])
+    @user = current_user
   end
 
   def new
     @application = Application.new
     @gallery = Gallery.find(params[:gallery_id])
+    @user = current_user
   end
 
   def create
     @gallery = Gallery.find(params[:gallery_id])
+    @user = current_user
 
     if current_user == @gallery.user_id
       flash[:alert] = "You can't reserve your own gallery"

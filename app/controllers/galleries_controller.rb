@@ -3,14 +3,17 @@ class GalleriesController < ApplicationController
 
   def index
     @galleries = Gallery.all
+    @user = current_user
   end
 
   def show
     @gallery = Gallery.find(params[:id])
+    @user = current_user
   end
 
   def new
     @gallery = Gallery.new
+    @user = current_user
   end
 
   def create

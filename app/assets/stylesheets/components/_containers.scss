@@ -30,3 +30,11 @@
 .container-main {
   margin: 80px;
 }
+
+.container-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
