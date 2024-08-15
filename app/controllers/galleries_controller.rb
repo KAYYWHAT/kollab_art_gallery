@@ -31,6 +31,7 @@ class GalleriesController < ApplicationController
 
   def create
     @gallery = current_user.galleries.build(gallery_params)
+    @user = current_user
 
     if @gallery.save
       redirect_to @gallery, notice: 'Gallery was successfully created.'
