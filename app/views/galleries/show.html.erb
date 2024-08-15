@@ -5,14 +5,27 @@
   <div class="page-container">
     <!-- Image Gallery -->
     <div class="image-gallery" style="padding-top: 75px;">
+      <!-- Main Image -->
       <div class="large-image">
-        <%= image_tag 'https://hiroshige-gallery.com/asset/images/rental/rental_img01.jpg', alt: 'main image' %>
+        <% if @gallery.photos.attached? %>
+          <%= cl_image_tag @gallery.photos.first.key, width: 800, height: 450, crop: :fill, class: "img-fluid", alt: "Main Gallery Photo" %>
+        <% else %>
+          <%= image_tag 'https://hiroshige-gallery.com/asset/images/rental/rental_img01.jpg', alt: 'main image', class: 'img-fluid' %>
+        <% end %>
       </div>
+
+      <!-- Small Images -->
       <div class="small-images">
-        <%= image_tag 'https://hiroshige-gallery.com/asset/images/rental/rental_img02.jpg', alt: 'Small Image 1' %>
-        <%= image_tag 'https://hiroshige-gallery.com/asset/images/rental/rental_img03.jpg', alt: 'Small Image 2' %>
-        <%= image_tag 'https://hiroshige-gallery.com/asset/images/rental/rental_img05.jpg', alt: 'Small Image 3' %>
-        <%= image_tag 'https://hiroshige-gallery.com/asset/images/rental/rental_img06.jpg', alt: 'Small Image 4' %>
+        <% if @gallery.photos.attached? %>
+          <% @gallery.photos[1..4].each do |photo| %>
+      <%= cl_image_tag photo.key, width: 400, height: 225, crop: :fill, class: "img-fluid", alt: "Gallery Photo", quality: 80 %>
+          <% end %>
+        <% else %>
+          <%= image_tag 'https://hiroshige-gallery.com/asset/images/rental/rental_img02.jpg', alt: 'Small Image 1', class: 'img-fluid' %>
+          <%= image_tag 'https://hiroshige-gallery.com/asset/images/rental/rental_img03.jpg', alt: 'Small Image 2', class: 'img-fluid' %>
+          <%= image_tag 'https://hiroshige-gallery.com/asset/images/rental/rental_img05.jpg', alt: 'Small Image 3', class: 'img-fluid' %>
+          <%= image_tag 'https://hiroshige-gallery.com/asset/images/rental/rental_img06.jpg', alt: 'Small Image 4', class: 'img-fluid' %>
+        <% end %>
       </div>
     </div>
   <!-- Gallery Title -->
