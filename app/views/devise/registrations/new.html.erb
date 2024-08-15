@@ -2,48 +2,40 @@
 <%= render "shared/flashes" %>
 
 <body class="gradient">
-  <div class="container" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <div class="account-container" style="max-width: 600px; width: 100%; padding: 20px;">
-      <h2>Register Gallery</h2>
-      <%= simple_form_for @gallery, html: { multipart: true } do |f| %>
-        <% if @gallery.errors[:photos].any? %>
-          <div class="alert alert-danger">
-            <ul>
-              <% @gallery.errors[:photos].each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
+  <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <div class="account-container">
+      <h2>Sign up</h2>
 
-        <div class="form-group" style="margin-top: 16px; font-family: 'Roboto', sans-serif;">
-          <%= f.input :name, label: 'Gallery Name', placeholder: 'Gallery name', required: true, input_html: { class: 'form-control-sm' } %>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { data: { turbo: false } }) do |f| %>
+        <%= f.error_notification %>
+
+        <div class="form-inputs">
+          <%= f.input :first_name,
+                       required: true,
+                       autofocus: true,
+                       input_html: { autocomplete: "given-name" } %>
+          <%= f.input :last_name,
+                       required: true,
+                       input_html: { autocomplete: "family-name" } %>
+          <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" }%>
+          <%= f.input :password,
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+                      required: true,
+                      input_html: { autocomplete: "new-password" } %>
         </div>
 
-        <div class="form-group" style="font-family: 'Roboto', sans-serif;">
-          <%= f.input :address, label: 'Address', placeholder: 'Gallery address', required: true, input_html: { class: 'form-control-sm' } %>
-        </div>
-
-        <div class="form-group" style="font-family: 'Roboto', sans-serif;">
-          <%= f.input :description, label: 'Description', placeholder: 'Gallery description', as: :text, required: true, input_html: { class: 'form-control-sm' } %>
-        </div>
-
-        <div class="form-group" style="font-family: 'Roboto', sans-serif;">
-          <%= f.input :price, label: 'Rental price per day', placeholder: 'Gallery price per day', required: true, input_html: { class: 'form-control-sm' } %>
-        </div>
-
-        <div class="form-group" style="font-family: 'Roboto', sans-serif;">
-          <%= f.input :website, label: 'Website', placeholder: 'https://example.com', input_html: { class: 'form-control-sm' } %>
-        </div>
-
-        <div class="form-group" style="font-family: 'Roboto', sans-serif;">
-          <%= f.input :photos, as: :file, label: 'Gallery Photos', input_html: { multiple: true, class: 'form-control-sm', required: true } %>
-        </div>
-
-        <div class="form-group">
-          <%= f.button :submit, 'Create Gallery', class: 'btn btn-primary' %>
+        <div class="form-actions">
+          <%= f.button :submit, "Sign up" %>
         </div>
       <% end %>
+
+      <%= render "devise/shared/links" %>
     </div>
   </div>
 </body>
