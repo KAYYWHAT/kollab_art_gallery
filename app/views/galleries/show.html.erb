@@ -41,7 +41,7 @@
     <div class="divider"></div>
     <div class="gallery-short-description" style="display: flex; align-items: center;">
     <%= image_tag 'https://kitt.lewagon.com/placeholder/users/ssaunier', alt: 'host photo', class: 'avatar', style: 'margin-right: 12px;' %>
-    <p style="margin: 0;"> Hosted by <strong>Kevin Downs</strong></p>
+    <p style="margin: 0;"> Hosted by <strong><%= @gallery.user.first_name %> <%= @gallery.user.last_name %></strong></p>
   </div>
     <div class="divider"></div>
     <div class="gallery-short-description">
@@ -90,7 +90,7 @@
 </div>
 </div>
 
-<script>
+<%# <script>
 document.addEventListener("DOMContentLoaded", function() {
   const startDateInput = document.getElementById('start_date');
   const endDateInput = document.getElementById('end_date');
@@ -109,4 +109,4 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
-</script>
+</script> %>
