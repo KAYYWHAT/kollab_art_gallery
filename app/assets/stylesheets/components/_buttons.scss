@@ -82,6 +82,19 @@
     }
 }
 
+
 .hidden {
   display: none;
-}
+  }
+
+.cancel {
+  color: rgb(100, 100, 100);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+
+  &:hover {
+    color: #E88A3D;
+  }
+

@@ -7,7 +7,7 @@ class Gallery < ApplicationRecord
   validates :address, uniqueness: true
   validates :description, length: { minimum: 10, maximum: 1000 }
   validates :price, numericality: { greater_than_or_equal_to: 0 }
-  validate :photos_presence
+  # validate :photos_presence
 
   private
 

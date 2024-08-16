@@ -8,18 +8,15 @@ class ApplicationsController < ApplicationController
 
   def show
     @application = Application.find(params[:id])
-    @user = current_user
   end
 
   def new
     @application = Application.new
     @gallery = Gallery.find(params[:gallery_id])
-    @user = current_user
   end
 
   def create
     @gallery = Gallery.find(params[:gallery_id])
-    @user = current_user
 
     if current_user.id == @gallery.user_id
       flash[:alert] = "You can't reserve your own gallery"
@@ -32,7 +29,7 @@ class ApplicationsController < ApplicationController
 
       if @application.save
         flash[:notice] = "Your application was successful"
-        redirect_to user_applications_path
+        redirect_to user_applications_path(current_user)
       else
         flash[:alert] = "There was an error with your application"
         render :new

@@ -3,7 +3,7 @@
 
 <body class="gradient">
   <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <div class="account-container">
+    <div class="account-container" style="padding: 55px 80px;">
       <div>
         <h2>Register Gallery</h2>
         <%= simple_form_for @gallery, html: { multipart: true } do |f| %>
@@ -35,6 +35,7 @@
             <%= f.button :submit, 'Create Gallery', class: 'button-standard' %>
           </div>
         <% end %>
+        <div class="cancel-container"><p><%= link_to "Cancel", user_applications_path(@user), class: "cancel" %></p></div>
       </div>
     </div>
   </div>
