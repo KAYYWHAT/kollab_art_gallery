@@ -1,6 +1,6 @@
 <%= render "shared/navbar" %>
 
-<div class="page-container">
+<div class="page-container" data-controller="status-button">
           <h1>Your application for <br><span class="flare"><%= @application.gallery.name %></span></h1>
     <!-- Image Gallery -->
     <div class="image-gallery">
@@ -16,7 +16,6 @@
           </div>
           <%= link_to "", gallery_path(@application.gallery), class:"button-dashboard-v2" %>
         </div>
-        <%= current_user.email %>
 
         <div class="dashboard-information">
           <h2> Applicants name </h2>
@@ -24,7 +23,7 @@
             <p> <%= @application.description %></p>
             <p> <i class="fa-solid fa-calendar-days"> </i> <%= @application.start_date %> - <%= @application.end_date %> </p>
             <%# <p> <%= @application.total.round %>
-            <p> <%= @application.status %> </p>
+            <p data-status-button-target= "status"> <%= @application.status %> </p>
           </div>
         </div>
 
@@ -37,4 +36,29 @@
 
       </div>
     </div>
+
+    <% if current_user.id = @application.gallery.user%>
+     <% if @application.status == "pending" %>
+      <div>
+
+        <%= simple_form_for @application, data: { status_button_target: "acptbtn", action: "submit->status-button#accept" } do |f| %>
+          <%= f.input :status, input_html: {value: 'accepted'}, as: :hidden %>
+          <%= f.submit 'Accept' %>
+        <% end %>
+
+        <%= simple_form_for @application, data: { status_button_target: "rjctbtn", action: "submit->status-button#reject" } do |f| %>
+          <%= f.input :status, input_html: {value: 'rejected'}, as: :hidden %>
+          <%= f.submit 'Reject' %>
+        <% end %>
+        <%else%>
+          <div></div>
+          <%end%>
+
+        </div>
+      <% else %>
+      <div>
+
+      </div>
+    <%end%>
+
 </div>

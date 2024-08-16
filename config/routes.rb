@@ -7,10 +7,10 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
-  resources :applications, only: [:show, :destroy]
+  resources :applications, only: [:show, :destroy, :update]
 
   resources :users do
-    resources :applications, only: [:index, :edit, :update]
+    resources :applications, only: [:index, :edit]
   end
 
   get "up" => "rails/health#show", as: :rails_health_check
