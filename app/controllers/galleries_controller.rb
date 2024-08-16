@@ -13,14 +13,23 @@ class GalleriesController < ApplicationController
   end
 
   def apply
-    @user = current_user
     @gallery = Gallery.find(params[:id])
-    @application = @gallery.applications.build(application_params.merge(user_id: current_user.id))
 
-    if @application.save
-      redirect_to user_applications_path(current_user), notice: 'Application was successfully created.'
+    if current_user == @gallery.user
+      flash[:alert] = "You can't reserve your own gallery"
+      redirect_to gallery_path(@gallery)
     else
-      render :show
+      # @application = @gallery.applications.build(application_params.merge(user_id: current_user.id))
+      @application = Application.new(application_params)
+      @application.gallery_id = @gallery.id
+      @application.user_id = current_user.id
+      @application.status = "pending"
+
+      if @application.save
+        redirect_to user_applications_path(current_user), notice: 'Application was successfully created.'
+      else
+        render :show
+      end
     end
   end
 

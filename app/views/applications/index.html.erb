@@ -10,7 +10,7 @@
 
   <h2 style="margin-top: 50px;"> Pending Kollabs </h2>
     <div class="grid-container">
-      <% @user.applications.each do |application| %>
+      <% @user.applications.where(status: "pending").each do |application| %>
         <div class="application-card grid-application" style="display: flex; flex-direction: column; justify-content: space-between;">
           <div>
             <div class="container-image-application"><%= cl_image_tag application.gallery.photos.first.key , alt: "empty gallery", class: "image" %></div>
@@ -20,7 +20,7 @@
           </div>
           <div class="space-between" style="align-items: baseline;">
             <p><%= link_to 'See details', application_path(application), class:"button-standard", style: "margin-top: 8px;" %></p>
-            <p style="color: #FE6077;"><strong>PENDING</strong></p>
+            <p style="color: #FE6077;"><strong><%= application.status %></strong></p>
           </div>
         </div>
       <%end%>
@@ -28,7 +28,7 @@
 
       <h2 style="margin-top: 30px;"> Active Kollabs </h2>
     <div class="grid-container">
-      <% @user.applications.each do |application| %>
+      <% @user.applications.where(status: "accepted").each do |application| %>
         <div class="application-card grid-application" style="display: flex; flex-direction: column; justify-content: space-between;">
           <div>
             <div class="container-image-application"><%= cl_image_tag application.gallery.photos.first.key , alt: "empty gallery", class: "image" %></div>
@@ -37,8 +37,8 @@
             <%= application.start_date %> - <%= application.end_date %></p>
           </div>
           <div class="space-between" style="align-items: baseline;">
-            <p><%= link_to 'See details', galleries_path, class:"button-standard", style: "margin-top: 8px;" %></p>
-            <p style="color: #608EED"><strong>ACTIVE</strong></p>
+            <p><%= link_to 'See details', application_path(application), class:"button-standard", style: "margin-top: 8px;" %></p>
+            <p style="color: #608EED"><strong><%= application.status %></strong></p>
           </div>
         </div>
       <%end%>

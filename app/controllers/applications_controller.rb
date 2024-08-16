@@ -18,7 +18,7 @@ class ApplicationsController < ApplicationController
   def create
     @gallery = Gallery.find(params[:gallery_id])
 
-    if current_user.id == @gallery.user_id
+    if current_user == @gallery.user
       flash[:alert] = "You can't reserve your own gallery"
       redirect_to new_gallery_application_path(@gallery) # Redirect back to the form
     else
