@@ -14,7 +14,7 @@
 
   <h2>Popular galleries in your area</h2>
     <div class="grid-container" style="margin-top: 24px;">
-    <% @galleries.each do |gallery| %>
+    <% @galleries.sample(4).each do |gallery| %>
       <div class="gallery-card grid-item" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
           <div class="container-image"><%= cl_image_tag gallery.photos.first.key, class: "image" %></div>
@@ -30,9 +30,9 @@
     <% end %>
   </div>
 
-  <h2 style="margin-top: 24px;">Popular galleries world-wide</h2>
+  <h2 style="margin-top: 24px;">All galleries</h2>
     <div class="grid-container" style="margin-top: 24px;">
-    <% @galleries.first(4).each do |gallery| %>
+    <% @galleries.each do |gallery| %>
       <div class="gallery-card grid-item" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
           <div class="container-image"><%= cl_image_tag gallery.photos.first.key, class: "image" %></div>
