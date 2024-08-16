@@ -10,26 +10,29 @@
 
   <h2 style="margin-top: 50px;"> Pending Kollabs </h2>
     <div class="grid-container">
-      <% @user.applications.where(status: "pending").each do |application| %>
-        <div class="application-card grid-application" style="display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div class="container-image-application"><%= cl_image_tag application.gallery.photos.first.key , alt: "empty gallery", class: "image" %></div>
-            <h3 style="margin-top: 16px;"><%= application.gallery.name %></h3>
-            <p> <span style="display: inline-block;" class="highlight"> ¥ <%=application.gallery.price.round %></span><br>
-            <%= application.start_date %> - <%= application.end_date %></p>
+      <% @applications.where(status: "pending").each do |application| %>
+        <% if application.user == current_user || application.gallery.user == current_user %>
+          <div class="application-card grid-application" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div class="container-image-application"><%= cl_image_tag application.gallery.photos.first.key , alt: "empty gallery", class: "image" %></div>
+              <h3 style="margin-top: 16px;"><%= application.gallery.name %></h3>
+              <p> <span style="display: inline-block;" class="highlight"> ¥ <%=application.gallery.price.round %></span><br>
+              <%= application.start_date %> - <%= application.end_date %></p>
+            </div>
+            <div class="space-between" style="align-items: baseline;">
+              <p><%= link_to 'See details', application_path(application), class:"button-standard", style: "margin-top: 8px;" %></p>
+              <p style="color: #FE6077;"><strong><%= application.status %></strong></p>
+            </div>
           </div>
-          <div class="space-between" style="align-items: baseline;">
-            <p><%= link_to 'See details', application_path(application), class:"button-standard", style: "margin-top: 8px;" %></p>
-            <p style="color: #FE6077;"><strong><%= application.status %></strong></p>
-          </div>
-        </div>
+        <%end%>
       <%end%>
     </div>
 
-      <h2 style="margin-top: 30px;"> Active Kollabs </h2>
+  <h2 style="margin-top: 30px;"> Active Kollabs </h2>
     <div class="grid-container">
-      <% @user.applications.where(status: "accepted").each do |application| %>
-        <div class="application-card grid-application" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <% @applications.where(status: "accepted").each do |application| %>
+        <% if application.user == current_user || application.gallery.user == current_user %>
+          <div class="application-card grid-application" style="display: flex; flex-direction: column; justify-content: space-between;">
           <div>
             <div class="container-image-application"><%= cl_image_tag application.gallery.photos.first.key , alt: "empty gallery", class: "image" %></div>
             <h3 style="margin-top: 16px;"><%= application.gallery.name %></h3>
@@ -41,6 +44,7 @@
             <p style="color: #608EED"><strong><%= application.status %></strong></p>
           </div>
         </div>
+        <%end%>
       <%end%>
     </div>
 
