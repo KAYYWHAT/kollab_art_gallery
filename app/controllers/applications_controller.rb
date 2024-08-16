@@ -40,6 +40,13 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  def update
+    p "hey"
+    @application = Application.find(params[:id])
+    @application.update(application_params)
+    render json: { status: application_params[:status] }
+  end
+
   private
 
   # def set_gallery
