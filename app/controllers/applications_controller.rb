@@ -38,10 +38,15 @@ class ApplicationsController < ApplicationController
   end
 
   def update
-    p "hey"
     @application = Application.find(params[:id])
     @application.update(application_params)
     render json: { status: application_params[:status] }
+  end
+
+  def destroy
+    @application = Application.find(params[:id])
+    @application.destroy
+    redirect_to user_applications_path(current_user), status: :see_other
   end
 
   private

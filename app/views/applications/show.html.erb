@@ -37,7 +37,7 @@
       </div>
     </div>
 
-    <% if current_user.id = @application.gallery.user%>
+    <% if current_user.id == @application.gallery.user %>
      <% if @application.status == "pending" %>
       <div>
 
@@ -50,14 +50,13 @@
           <%= f.input :status, input_html: {value: 'rejected'}, as: :hidden %>
           <%= f.submit 'Reject' %>
         <% end %>
-        <%else%>
-          <div></div>
-          <%end%>
+        <% else %>
+        <%end%>
 
         </div>
       <% else %>
       <div>
-
+        <%= link_to "Cancel", application_path(@application), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
       </div>
     <%end%>
 
