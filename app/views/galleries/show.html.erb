@@ -1,3 +1,21 @@
+<style>
+  .profile-photo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+  }
+
+  .profile-photo {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+  }
+</style>
+
+
 <%= render "shared/navbar" %>
 <%= render "shared/flashes" %>
 
@@ -40,9 +58,15 @@
     <!-- Dividers and Sections -->
     <div class="divider"></div>
     <div class="gallery-short-description" style="display: flex; align-items: center;">
-    <%= image_tag 'https://kitt.lewagon.com/placeholder/users/ssaunier', alt: 'host photo', class: 'avatar', style: 'margin-right: 12px;' %>
-    <p style="margin: 0;"> Hosted by <strong><%= @gallery.user.first_name %> <%= @gallery.user.last_name %></strong></p>
-  </div>
+      <div class="profile-photo-container">
+        <% if @gallery.user.profile_photo.attached? %>
+          <%= image_tag rails_blob_url(@gallery.user.profile_photo, only_path: true), alt: 'Profile photo', class: 'profile-photo' %>
+        <% else %>
+          <%= image_tag 'https://kitt.lewagon.com/placeholder/users/ssaunier', alt: 'host photo', class: 'profile-photo' %>
+        <% end %>
+      </div>
+      <p style="margin: 0;"> Hosted by <strong><%= @gallery.user.first_name %> <%= @gallery.user.last_name %></strong></p>
+    </div>
     <div class="divider"></div>
     <div class="gallery-short-description">
       <ul>
@@ -89,24 +113,3 @@
   </div>
 </div>
 </div>
-
-<%# <script>
-document.addEventListener("DOMContentLoaded", function() {
-  const startDateInput = document.getElementById('start_date');
-  const endDateInput = document.getElementById('end_date');
-
-  startDateInput.addEventListener('change', function() {
-    const startDate = new Date(startDateInput.value);
-    endDateInput.setAttribute('min', startDate.toISOString().split('T')[0]);
-  });
-
-  endDateInput.addEventListener('change', function() {
-    const startDate = new Date(startDateInput.value);
-    const endDate = new Date(endDateInput.value);
-    if (endDate < startDate) {
-      alert('End date cannot be before the start date.');
-      endDateInput.value = '';
-    }
-  });
-});
-</script> %>
