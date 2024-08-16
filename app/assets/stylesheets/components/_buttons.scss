@@ -82,6 +82,11 @@
     }
 }
 
+
+.hidden {
+  display: none;
+  }
+
 .cancel {
   color: rgb(100, 100, 100);
   font-family: 'Roboto', sans-serif;
@@ -92,4 +97,4 @@
   &:hover {
     color: #E88A3D;
   }
-}
+
