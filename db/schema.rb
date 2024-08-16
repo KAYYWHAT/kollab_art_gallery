@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_14_035129) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_15_044050) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,6 +56,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_14_035129) do
     t.index ["user_id"], name: "index_applications_on_user_id"
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "gallery_id", null: false
+    t.text "description"
+    t.string "image"
+    t.date "booking_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gallery_id"], name: "index_bookings_on_gallery_id"
+  end
+
   create_table "galleries", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -66,6 +76,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_14_035129) do
     t.datetime "updated_at", null: false
     t.string "booking"
     t.string "website"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_galleries_on_user_id"
   end
 
@@ -88,5 +100,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_14_035129) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "applications", "galleries"
   add_foreign_key "applications", "users"
+  add_foreign_key "bookings", "galleries"
   add_foreign_key "galleries", "users"
 end
