@@ -9,6 +9,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 100%;
   overflow: hidden;
+  box-sizing: border-box; /* Ensure padding is included in the total width/height */
 }
 
 .container-fluid {
@@ -26,19 +27,29 @@
   margin-right: 20px;
 }
 
+.footer-info p {
+  margin: 0; /* Remove default margin */
+  line-height: 1.6; /* Ensure consistent line height */
+}
+
 .footer-links {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+  padding-top: 30px; /* Ensure there's enough space at the top */
+}
+
+.footer-links .find-us {
+  margin-bottom: 2px; /* Small space between text and icons */
+  font-size: 16px; /* Adjust font size if needed */
 }
 
 .footer-links .social-icons {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 15px;
-  margin-top: 20px; /* Adjust this if needed to ensure there's space for the text */
+  gap: 15px; /* Space between icons */
 }
 
 .footer-links a {
