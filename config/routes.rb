@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
-  resources :applications, only: [:show, :destroy, :update]
+  resources :applications, only: [:show, :update, :destroy]
 
   resources :users do
     resources :applications, only: [:index, :edit]
